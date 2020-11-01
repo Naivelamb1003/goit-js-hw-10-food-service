@@ -1,14 +1,21 @@
 import './styles.css';
 import './local-storage';
 import menuJson from "./menu.json";
+import menuTemplate from './templates/menu.hbs';
 const Theme = {
     LIGHT: 'light-theme',
     DARK: 'dark-theme',
   };
+ 
 
 const KEY_THEME = "theme";
 const themeCheckbox = document.querySelector('#theme-switch-toggle');
 const bodyTheme = document.querySelector("body");
+
+const markup = menuTemplate(menuJson);
+
+const container = document.querySelector('.js-menu');
+container.innerHTML = markup;
 
 let savedSettings = localStorage.getItem(KEY_THEME);
 setDefaultTheme();
@@ -47,6 +54,7 @@ function changeTheme(){
     }
 
 };
+
 
 
 
